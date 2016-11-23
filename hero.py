@@ -20,3 +20,7 @@ class hero:
     def getUserName(self):
         """Returns player's name"""
         return self.userName
+
+    def setUserName(self, inputName):
+        """Set player name"""
+        self.userName = inputName
