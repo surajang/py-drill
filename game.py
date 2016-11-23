@@ -12,8 +12,9 @@ def intro():
     print ""
 
 intro()
-var = raw_input("What's your name, hero? : ")
-print "Ah, nice to meet you,",var,"."
+print "환영합니다, 낯선 여행자님. 당신은 누구신가요?"
+var = raw_input("이름을 입력하세요: ")
+print "Ah, nice to meet you,",var + "."
 
 fibo.fib(2000) #just for test
 print fibo.fib.__doc__
