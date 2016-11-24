@@ -15,7 +15,10 @@ class hero:
 
     def stat(self):
         """Display player's status"""
+        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         print "현재위치 "+ self.locationV + "-" + self.locationH + " | HP " + str(self.currentHP) + "/" + str(self.hpMax) + " | " + str(self.currentMP) + "/" + str(self.mpMax)
+        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        print ""
 
     def getUserName(self):
         """Returns player's name"""

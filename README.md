@@ -23,3 +23,7 @@
   **기본**: 사용자가 이동하는 턴마다 주사위를 던져서 무작위 이벤트 발생.
 
   **부가**: 위치에 할당된 가중치에 따라 이벤트 발생 빈도 조정. (ex. outland에서는 몹 등장 비율 증가)
+
+## Dependancy
+
+1. colorama - https://pypi.python.org/pypi/colorama
