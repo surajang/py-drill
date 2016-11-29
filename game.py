@@ -2,6 +2,7 @@
 import hero
 import sys
 from colorama import Fore, Back, Style, init
+# some imports...
 
 init()  #Initialize Colorama
 user = hero.hero()
