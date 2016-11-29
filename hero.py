@@ -1,16 +1,17 @@
 # -*- coding: UTF-8 -*-
 class hero:
     """Manage player's status info."""
-    userName = ""
-    playStartTime = 0
-    playClearTime = 0
-    currentStage = 1
+    userName = ""       #Record player name
+    playStartTime = 0   #Record for player's game start time
+    playClearTime = 0   #Record for player's game clear time
+    moveCounter = 0     #Record for player's movement count
+    currentStage = 1    #Record for player's stage clear info.
 
-    def stat(self):
+    def getStatus(self):
         """Display player's status"""
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        print "현재위치: "+ str(self.currentStage) + "번 방 | " + "플레이 시간: 00분 20초"
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        print " " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: 00m 20s" + " | " + "Moves: 0"
+        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         print ""
 
     def getUserName(self):

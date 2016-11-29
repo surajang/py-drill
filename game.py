@@ -30,14 +30,30 @@ def introTitle():
     print "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     print Style.RESET_ALL + ""
 
-def welcomeProcess():
-    """Welcoming user process"""
-    print "Select menu to start."
-    print "(N)New game (R)Ranking : "
+def welcomeMenu():
+    """Welcoming-user menu. Provide sign-up, login, ranking view features.
+       Sign-up and login feature: user DB required, but not yet implemented :( """
 
-    userInputName = raw_input("이름을 입력하세요: ")
+    while True:
+        welcomeMenuInput = raw_input("(N)ew (L)ogin (R)anking : ")
+
+        if welcomeMenuInput in ('N', 'n'):
+            print "new game!!!"
+            createNewUser()
+            break
+        elif welcomeMenuInput in ('L', 'l'):
+            print "Login process"
+        elif welcomeMenuInput in ('R', 'r'):
+            print "Ranking!!"
+            viewRanking()
+        else:
+            print "Wrong input. try again"
+
+def createNewUser():
+    userInputName = raw_input("Enter player name: ")
     user.setUserName(userInputName) #create player profile
-    print "[안내원] 만나서 반갑습니다,",user.getUserName() + "."
+    print "Welcome,",user.getUserName() + "."
+    pass #Now, pass the user to the stage #1 room.
 
 def showMap():
     """Display the map of current room. May contains graphical data..?"""
@@ -66,7 +82,7 @@ def mainMenu():
             print "Take a look at your inventory..."
             pass #place inventory feature call here
         elif userInput in ('S', 's'):
-            user.stat() #display player's status and come back to main menu
+            user.getStatus() #display player's status and come back to main menu
         elif userInput in ('V', 'v'):
             showMap()
         elif userInput in ('Z', 'z'):
@@ -84,42 +100,53 @@ def optionMenu():
         if userInput in ('B', 'b'):
             mainMenu() #Back to main
             break
-        elif userInput in ('R', 'r'):
-            clearScreen()
-            print "Ranking chart..."
-            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            print "| # |    NAME    | Playtime | Moves | Message        "
-            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            print "| 1 | userName   | 12:22:30 | 325   | WTF!!!        |"
-            print "| 2 | userName2  | 12:22:30 | 807   | LOL           |"
-            print "| 3 | userName3  | 12:22:30 | 423   | Nah...        |"
-            print "| 4 | userName4  | 12:22:30 | 112   | So be it.     |"
-            print "| 5 | userName5  | 02:02:30 |  25   | :D            |"
-            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            print "(1/3 pages) (B)y Time (C)ontinue (E)xit: "
-            pass #place Ranking table call here
+        elif userInput in ('R', 'r'):    #View ranking
+            viewRanking()
             mainMenu()
             break
-        elif userInput in ('S', 's'):
+        elif userInput in ('S', 's'):    #Save current game status
             pass #Save game
             print "saving..."
             mainMenu()
             break
-        elif userInput in ('H', 'h'):
+        elif userInput in ('H', 'h'):    #View Help
             print "Help!!!"
             pass #place mapview feature call here
             mainMenu()
             break
-        elif userInput in ('Q', 'q'):
-            print "Good bye."
-            pass #Place quit sequence (confirm --> quit)
-            sys.exit(0)
+        elif userInput in ('Q', 'q'):    #Quit game
+            exitGame()
             break
         else:
             print "try again"
 
+def exitGame():
+    """Do game-exiting process"""
+    pass #confirm quit really
+    pass #Check play time of current session and add to total play time
+    pass #Check moveCount of current session and add to total moveCount
+    pass #Check current stage and update to player's profile
+    print "Good bye."
+    sys.exit(0)
+
+def viewRanking():
+    """Display Rank table"""
+    clearScreen()
+    print "Ranking chart..."
+    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    print "| # |    NAME    | Playtime | Moves | Message        "
+    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    print "| 1 | userName   | 12:22:30 | 325   | WTF!!!        |"
+    print "| 2 | userName2  | 12:22:30 | 807   | LOL           |"
+    print "| 3 | userName3  | 12:22:30 | 423   | Nah...        |"
+    print "| 4 | userName4  | 12:22:30 | 112   | So be it.     |"
+    print "| 5 | userName5  | 02:02:30 |  25   | :D            |"
+    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    print "(1/3 pages) (B)y Time (C)ontinue (E)xit: "
+    pass #place Ranking table call here
+
 init()  #Initialize Colorama
-user = hero.hero()
-introTitle()
-welcomeProcess()
+user = hero.hero() #create/Initialize user profile
+introTitle() #Draw intro title
+welcomeMenu()
 mainMenu()
