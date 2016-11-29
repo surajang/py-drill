@@ -3,12 +3,12 @@ import hero
 import sys
 from colorama import Fore, Back, Style, init
 
-init()  #Initialize Colorama
-user = hero.hero()
+def clearScreen():
+    sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
 
 def introTitle():
     """Draw main title with ascii graphic... Just for fancy looking :) """
-    sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
+    clearScreen()
     print "12345678901234567890123456789012345678901234567890123456789012345678901234567890" #Ruler for 80-char terminal width
     print Back.RED + ""
     print "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
@@ -28,17 +28,15 @@ def introTitle():
     print "┃                                                             ┃"
     print "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
     print Style.RESET_ALL + ""
-    print "To start a new game, press S then return."
 
 def welcomeProcess():
     """Welcoming user process"""
-    print "[안내원] 환영합니다, 낯선 여행자님. 당신은 누구신가요?"
+    print "Select menu to start."
+    print "(N)New game (R)Ranking : "
+
     userInputName = raw_input("이름을 입력하세요: ")
     user.setUserName(userInputName) #create player profile
     print "[안내원] 만나서 반갑습니다,",user.getUserName() + "."
-
-introTitle()
-welcomeProcess()
 
 def showMap():
     """Display the map of current room. May contains graphical data..?"""
@@ -80,14 +78,25 @@ def mainMenu():
 def optionMenu():
     """Option menu. Provides misc. features."""
     while True:
-        userInput = raw_input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)메인메뉴 (L)불러오기 (S)저장 (H)도움말 (Q)종료: ") #main menu mockup
+        userInput = raw_input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)메인메뉴 (S)저장 (R)Ranking (H)도움말 (Q)종료: ") #main menu mockup
 
         if userInput in ('B', 'b'):
             mainMenu() #Back to main
             break
-        elif userInput in ('L', 'l'):
-            print "Load previous play..."
-            pass #place loading feature call here
+        elif userInput in ('R', 'r'):
+            clearScreen()
+            print "Ranking chart..."
+            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            print "| # |    NAME    | Playtime | Moves | Message        "
+            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            print "| 1 | userName   | 12:22:30 | 325   | WTF!!!        |"
+            print "| 2 | userName2  | 12:22:30 | 807   | LOL           |"
+            print "| 3 | userName3  | 12:22:30 | 423   | Nah...        |"
+            print "| 4 | userName4  | 12:22:30 | 112   | So be it.     |"
+            print "| 5 | userName5  | 02:02:30 |  25   | :D            |"
+            print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            print "(1/3 pages) (B)y Time (C)ontinue (E)xit: "
+            pass #place Ranking table call here
             mainMenu()
             break
         elif userInput in ('S', 's'):
@@ -108,4 +117,8 @@ def optionMenu():
         else:
             print "try again"
 
+init()  #Initialize Colorama
+user = hero.hero()
+introTitle()
+welcomeProcess()
 mainMenu()
