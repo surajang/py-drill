@@ -2,6 +2,7 @@
 import hero
 import sys
 from colorama import Fore, Back, Style, init
+# some imports...
 
 def clearScreen():
     sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
