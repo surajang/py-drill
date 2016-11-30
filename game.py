@@ -102,32 +102,30 @@ def optionMenu():
             break
         elif userInput in ('R', 'r'):    #View ranking
             viewRanking()
-            mainMenu()
-            break
         elif userInput in ('S', 's'):    #Save current game status
             pass #Save game
             print "saving..."
-            mainMenu()
-            break
         elif userInput in ('H', 'h'):    #View Help
             print "Help!!!"
             pass #place mapview feature call here
-            mainMenu()
-            break
         elif userInput in ('Q', 'q'):    #Quit game
             exitGame()
-            break
         else:
             print "try again"
 
 def exitGame():
     """Do game-exiting process"""
-    pass #confirm quit really
-    pass #Check play time of current session and add to total play time
-    pass #Check moveCount of current session and add to total moveCount
-    pass #Check current stage and update to player's profile
-    print "Good bye."
-    sys.exit(0)
+    while True:
+        exitConfirm = raw_input("Are you sure to quit game(Y/N)?: ")
+        if exitConfirm in ('Y', 'y'):
+            pass #Check play time of current session and add to total play time
+            pass #Check moveCount of current session and add to total moveCount
+            pass #Check current stage and update to player's profile
+            print "Good bye."
+            sys.exit(0)
+        else:
+            print "Nope... get back..."
+            break
 
 def viewRanking():
     """Display Rank table"""
