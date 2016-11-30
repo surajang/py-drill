@@ -1,12 +1,13 @@
 # -*- coding: UTF-8 -*-
 import hero
 import sys
+import time
 from colorama import Fore, Back, Style, init
 # some imports...
 
 def clear_screen():
     #sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
-    print(chr(27) + "[2J")
+    print(chr(27) + "[2J") #Don't know why this one makes extra linebreak???!
 
 def intro_title():
     """Draw main title with ascii graphic... Just for fancy looking :) """
@@ -38,8 +39,7 @@ def welcome_menu():
     """
 
     while True:
-        welcomeMenuInput = input("(N)ew (L)ogin (R)anking : ")
-
+        welcomeMenuInput = input("(N)ew (L)ogin (R)anking :")
         if welcomeMenuInput in ('N', 'n'):
             print("new game!!!")
             create_new_user()
@@ -47,16 +47,29 @@ def welcome_menu():
         elif welcomeMenuInput in ('L', 'l'):
             print("Login process")
         elif welcomeMenuInput in ('R', 'r'):
-            print("Ranking!!")
             view_ranking()
         else:
             print("Wrong input. try again")
 
 def create_new_user():
+    """Do new user sign-up process.
+    Get User name, PW(TBD) from user and save them to DB
+    Advance user to corresponding stage (which is #1)
+    """
     userInputName = input("Enter player name: ")
     user.set_user_name(userInputName) #create player profile
     print("Welcome," + user.get_user_name() + ".")
+    print(time.time())
+    user.set_play_start_time(time.time())
     pass #Now, pass the user to the stage #1 room.
+    stage_dispatcher(user.get_current_stage())
+
+def stage_dispatcher(roomNumber):
+    """Send user to requested stage room
+    roomNumber arg. is required.
+    """
+    print(user.get_user_name() + " is now entering room #" + str(roomNumber))
+    pass #call stage1 story
 
 def show_map():
     """Display the map of current room. May contains graphical data..?"""
@@ -76,7 +89,7 @@ def show_map():
 def main_menu():
     """Main menu. All game play starts from here and comes back to here."""
     while True:
-        userInput = input("(M)이동 (S)상태 (I)인벤토리 (V)지도 (Z)기타: ") #main menu mockup
+        userInput = input("(M)ove (S)tat (I)nventory (V)iew Map (Z)Etc. :") #main menu mockup
 
         if userInput in ('M', 'm'):
             print("Let's get move!")
@@ -90,7 +103,6 @@ def main_menu():
             show_map()
         elif userInput in ('Z', 'z'):
             option_menu()
-            pass #place other menu call here
             break
         else:
             print("try again")
@@ -98,7 +110,7 @@ def main_menu():
 def option_menu():
     """Option menu. Provides misc. features."""
     while True:
-        userInput = input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)메인메뉴 (S)저장 (R)Ranking (H)도움말 (Q)종료: ") #main menu mockup
+        userInput = input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)ack (S)ave (R)anking (H)elp (Q)uit: ") #main menu mockup
 
         if userInput in ('B', 'b'):
             main_menu() #Back to main
