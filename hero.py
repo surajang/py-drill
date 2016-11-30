@@ -9,10 +9,10 @@ class hero:
 
     def getStatus(self):
         """Display player's status"""
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        print " " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: 00m 20s" + " | " + "Moves: 0"
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        print ""
+        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        print(" " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: 00m 20s" + " | " + "Moves: 0")
+        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        print("")
 
     def getUserName(self):
         """Returns player's name (string)"""

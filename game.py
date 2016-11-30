@@ -10,25 +10,26 @@ def clearScreen():
 def introTitle():
     """Draw main title with ascii graphic... Just for fancy looking :) """
     clearScreen()
-    print "12345678901234567890123456789012345678901234567890123456789012345678901234567890" #Ruler for 80-char terminal width
-    print Back.RED + ""
-    print "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-    print "┃                                                             ┃"
-    print "┃    ██▓███ ▓██   ██▓ ██▀███   ▒█████   ▒█████   ███▄ ▄███▓   ┃"
-    print "┃   ▓██░  ██▒▒██  ██▒▓██ ▒ ██▒▒██▒  ██▒▒██▒  ██▒▓██▒▀█▀ ██▒   ┃"
-    print "┃   ▓██░ ██▓▒ ▒██ ██░▓██ ░▄█ ▒▒██░  ██▒▒██░  ██▒▓██    ▓██░   ┃"
-    print "┃   ▒██▄█▓▒ ▒ ░ ▐██▓░▒██▀▀█▄  ▒██   ██░▒██   ██░▒██    ▒██    ┃"
-    print "┃   ▒██▒ ░  ░ ░ ██▒▓░░██▓ ▒██▒░ ████▓▒░░ ████▓▒░▒██▒   ░██▒   ┃"
-    print "┃   ▒▓▒░ ░  ░  ██▒▒▒ ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░▒░▒░ ░ ▒░   ░  ░   ┃"
-    print "┃   ░▒ ░     ▓██ ░▒░   ░▒ ░ ▒░  ░ ▒ ▒░   ░ ▒ ▒░ ░  ░      ░   ┃"
-    print "┃   ░░       ▒ ▒ ░░    ░░   ░ ░ ░ ░ ▒  ░ ░ ░ ▒  ░      ░      ┃"
-    print "┃            ░ ░        ░         ░ ░      ░ ░         ░      ┃"
-    print "┃            ░ ░                                              ┃"
-    print "┃                 GET THE HELL OUT OF THERE!                  ┃"
-    print "┃               PyROOM project by surajang 2016               ┃"
-    print "┃                                                             ┃"
-    print "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-    print Style.RESET_ALL + ""
+    print("12345678901234567890123456789012345678901234567890123456789012345678901234567890") #Ruler for 80-char terminal width
+    print(Back.RED + "")
+    print("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print("┃                                                             ┃")
+    print("┃    ██▓███ ▓██   ██▓ ██▀███   ▒█████   ▒█████   ███▄ ▄███▓   ┃")
+    print("┃   ▓██░  ██▒▒██  ██▒▓██ ▒ ██▒▒██▒  ██▒▒██▒  ██▒▓██▒▀█▀ ██▒   ┃")
+    print("┃   ▓██░ ██▓▒ ▒██ ██░▓██ ░▄█ ▒▒██░  ██▒▒██░  ██▒▓██    ▓██░   ┃")
+    print("┃   ▒██▄█▓▒ ▒ ░ ▐██▓░▒██▀▀█▄  ▒██   ██░▒██   ██░▒██    ▒██    ┃")
+    print("┃   ▒██▒ ░  ░ ░ ██▒▓░░██▓ ▒██▒░ ████▓▒░░ ████▓▒░▒██▒   ░██▒   ┃")
+    print("┃   ▒▓▒░ ░  ░  ██▒▒▒ ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░▒░▒░ ░ ▒░   ░  ░   ┃")
+    print("┃   ░▒ ░     ▓██ ░▒░   ░▒ ░ ▒░  ░ ▒ ▒░   ░ ▒ ▒░ ░  ░      ░   ┃")
+    print("┃   ░░       ▒ ▒ ░░    ░░   ░ ░ ░ ░ ▒  ░ ░ ░ ▒  ░      ░      ┃")
+    print("┃            ░ ░        ░         ░ ░      ░ ░         ░      ┃")
+    print("┃            ░ ░                                              ┃")
+    print("┃                 GET THE HELL OUT OF THERE!                  ┃")
+    print("┃             PyROOM project by (c)surajang 2016              ┃")
+    print("┃                 Published under MIT License                 ┃")
+    print("┃                                                             ┃")
+    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print(Style.RESET_ALL + "")
 
 def welcomeMenu():
     """Welcoming-user menu. Provide sign-up, login, ranking view features.
@@ -38,37 +39,37 @@ def welcomeMenu():
         welcomeMenuInput = raw_input("(N)ew (L)ogin (R)anking : ")
 
         if welcomeMenuInput in ('N', 'n'):
-            print "new game!!!"
+            print("new game!!!")
             createNewUser()
             break
         elif welcomeMenuInput in ('L', 'l'):
-            print "Login process"
+            print("Login process")
         elif welcomeMenuInput in ('R', 'r'):
-            print "Ranking!!"
+            print("Ranking!!")
             viewRanking()
         else:
-            print "Wrong input. try again"
+            print("Wrong input. try again")
 
 def createNewUser():
     userInputName = raw_input("Enter player name: ")
     user.setUserName(userInputName) #create player profile
-    print "Welcome,",user.getUserName() + "."
+    print("Welcome," + user.getUserName() + ".")
     pass #Now, pass the user to the stage #1 room.
 
 def showMap():
     """Display the map of current room. May contains graphical data..?"""
-    print "   1 2 3 4 5 6 7 8 9 0 "
-    print "1 #####################"
-    print "2 # | | | | | | | | | #"
-    print "3 # | |$| | | | | | | #"
-    print "4 # | | | |X| | | | | #"
-    print "5 @ | | | | | | | | | @"
-    print "6 @ | | | | | | | | | @"
-    print "7 # | | | | | | | | | #"
-    print "8 # | | | | | | |O| | #"
-    print "9 # | | | | | | | | | #"
-    print "0 # | | | | | | | | | #"
-    print "  #####################"
+    print("   1 2 3 4 5 6 7 8 9 0 ")
+    print("1 #####################")
+    print("2 # | | | | | | | | | #")
+    print("3 # | |$| | | | | | | #")
+    print("4 # | | | |X| | | | | #")
+    print("5 @ | | | | | | | | | @")
+    print("6 @ | | | | | | | | | @")
+    print("7 # | | | | | | | | | #")
+    print("8 # | | | | | | |O| | #")
+    print("9 # | | | | | | | | | #")
+    print("0 # | | | | | | | | | #")
+    print("  #####################")
 
 def mainMenu():
     """Main menu. All game play starts from here and comes back to here."""
@@ -76,10 +77,10 @@ def mainMenu():
         userInput = raw_input("(M)이동 (S)상태 (I)인벤토리 (V)지도 (Z)기타: ") #main menu mockup
 
         if userInput in ('M', 'm'):
-            print "Let's get move!"
+            print("Let's get move!")
             pass #place move feature call here
         elif userInput in ('I', 'i'):
-            print "Take a look at your inventory..."
+            print("Take a look at your inventory...")
             pass #place inventory feature call here
         elif userInput in ('S', 's'):
             user.getStatus() #display player's status and come back to main menu
@@ -90,7 +91,7 @@ def mainMenu():
             pass #place other menu call here
             break
         else:
-            print "try again"
+            print("try again")
 
 def optionMenu():
     """Option menu. Provides misc. features."""
@@ -104,14 +105,14 @@ def optionMenu():
             viewRanking()
         elif userInput in ('S', 's'):    #Save current game status
             pass #Save game
-            print "saving..."
+            print("saving...")
         elif userInput in ('H', 'h'):    #View Help
-            print "Help!!!"
+            print("Help!!!")
             pass #place mapview feature call here
         elif userInput in ('Q', 'q'):    #Quit game
             exitGame()
         else:
-            print "try again"
+            print("try again")
 
 def exitGame():
     """Do game-exiting process"""
@@ -121,26 +122,26 @@ def exitGame():
             pass #Check play time of current session and add to total play time
             pass #Check moveCount of current session and add to total moveCount
             pass #Check current stage and update to player's profile
-            print "Good bye."
+            print("Good bye.")
             sys.exit(0)
         else:
-            print "Nope... get back..."
+            print("Nope... get back...")
             break
 
 def viewRanking():
     """Display Rank table"""
     clearScreen()
-    print "Ranking chart..."
-    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    print "| # |    NAME    | Playtime | Moves | Message        "
-    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    print "| 1 | userName   | 12:22:30 | 325   | WTF!!!        |"
-    print "| 2 | userName2  | 12:22:30 | 807   | LOL           |"
-    print "| 3 | userName3  | 12:22:30 | 423   | Nah...        |"
-    print "| 4 | userName4  | 12:22:30 | 112   | So be it.     |"
-    print "| 5 | userName5  | 02:02:30 |  25   | :D            |"
-    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    print "(1/3 pages) (B)y Time (C)ontinue (E)xit: "
+    print ("Ranking chart...")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("| # |    NAME    | Playtime | Moves | Message        ")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("| 1 | userName   | 12:22:30 | 325   | WTF!!!        |")
+    print("| 2 | userName2  | 12:22:30 | 807   | LOL           |")
+    print("| 3 | userName3  | 12:22:30 | 423   | Nah...        |")
+    print("| 4 | userName4  | 12:22:30 | 112   | So be it.     |")
+    print("| 5 | userName5  | 02:02:30 |  25   | :D            |")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("(1/3 pages) (B)y Time (C)ontinue (E)xit: ")
     pass #place Ranking table call here
 
 init()  #Initialize Colorama
