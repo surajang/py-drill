@@ -29,3 +29,7 @@ class Hero:
     def set_current_stage(self, stageNumber):
         """Update player's current stage number"""
         self.currentStage = stageNumber
+
+    def set_play_start_time(self, timeStamp):
+        """Save the initialized time = very first play time"""
+        self.playStartTime = timeStamp
