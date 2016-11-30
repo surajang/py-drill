@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-class hero:
+class Hero:
     """Manage player's status info."""
     userName = ""       #Record player name
     playStartTime = 0   #Record for player's game start time
@@ -7,25 +7,25 @@ class hero:
     moveCounter = 0     #Record for player's movement count
     currentStage = 1    #Record for player's stage clear info.
 
-    def getStatus(self):
+    def get_status(self):
         """Display player's status"""
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
         print(" " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: 00m 20s" + " | " + "Moves: 0")
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
         print("")
 
-    def getUserName(self):
+    def get_user_name(self):
         """Returns player's name (string)"""
         return self.userName
 
-    def setUserName(self, inputName):
+    def set_user_name(self, inputName):
         """Set player name"""
         self.userName = inputName
 
-    def getCurrentStage(self):
+    def get_current_stage(self):
         """Returns player's current stage number (number)"""
         return self.currentStage
 
-    def setCurrentStage(self, stageNumber):
+    def set_current_stage(self, stageNumber):
         """Update player's current stage number"""
         self.currentStage = stageNumber

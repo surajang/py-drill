@@ -4,14 +4,14 @@ import sys
 from colorama import Fore, Back, Style, init
 # some imports...
 
-def clearScreen():
-    sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
+def clear_screen():
+    #sys.stderr.write("\x1b[2J\x1b[H") #Clear Terminal screen. May not work in Windows client?
+    print(chr(27) + "[2J")
 
-def introTitle():
+def intro_title():
     """Draw main title with ascii graphic... Just for fancy looking :) """
-    clearScreen()
-    print("12345678901234567890123456789012345678901234567890123456789012345678901234567890") #Ruler for 80-char terminal width
-    print(Back.RED + "")
+    #clear_screen()
+    print(Back.RED)
     print("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
     print("┃                                                             ┃")
     print("┃    ██▓███ ▓██   ██▓ ██▀███   ▒█████   ▒█████   ███▄ ▄███▓   ┃")
@@ -29,34 +29,36 @@ def introTitle():
     print("┃                 Published under MIT License                 ┃")
     print("┃                                                             ┃")
     print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
-    print(Style.RESET_ALL + "")
+    print(Style.RESET_ALL)
 
-def welcomeMenu():
-    """Welcoming-user menu. Provide sign-up, login, ranking view features.
-       Sign-up and login feature: user DB required, but not yet implemented :( """
+def welcome_menu():
+    """Welcoming-user menu.
+    Provide sign-up, login, ranking view features.
+    Sign-up and login feature: user DB required, but not yet implemented :(
+    """
 
     while True:
-        welcomeMenuInput = raw_input("(N)ew (L)ogin (R)anking : ")
+        welcomeMenuInput = input("(N)ew (L)ogin (R)anking : ")
 
         if welcomeMenuInput in ('N', 'n'):
             print("new game!!!")
-            createNewUser()
+            create_new_user()
             break
         elif welcomeMenuInput in ('L', 'l'):
             print("Login process")
         elif welcomeMenuInput in ('R', 'r'):
             print("Ranking!!")
-            viewRanking()
+            view_ranking()
         else:
             print("Wrong input. try again")
 
-def createNewUser():
-    userInputName = raw_input("Enter player name: ")
-    user.setUserName(userInputName) #create player profile
-    print("Welcome," + user.getUserName() + ".")
+def create_new_user():
+    userInputName = input("Enter player name: ")
+    user.set_user_name(userInputName) #create player profile
+    print("Welcome," + user.get_user_name() + ".")
     pass #Now, pass the user to the stage #1 room.
 
-def showMap():
+def show_map():
     """Display the map of current room. May contains graphical data..?"""
     print("   1 2 3 4 5 6 7 8 9 0 ")
     print("1 #####################")
@@ -71,10 +73,10 @@ def showMap():
     print("0 # | | | | | | | | | #")
     print("  #####################")
 
-def mainMenu():
+def main_menu():
     """Main menu. All game play starts from here and comes back to here."""
     while True:
-        userInput = raw_input("(M)이동 (S)상태 (I)인벤토리 (V)지도 (Z)기타: ") #main menu mockup
+        userInput = input("(M)이동 (S)상태 (I)인벤토리 (V)지도 (Z)기타: ") #main menu mockup
 
         if userInput in ('M', 'm'):
             print("Let's get move!")
@@ -83,26 +85,26 @@ def mainMenu():
             print("Take a look at your inventory...")
             pass #place inventory feature call here
         elif userInput in ('S', 's'):
-            user.getStatus() #display player's status and come back to main menu
+            user.get_status() #display player's status and come back to main menu
         elif userInput in ('V', 'v'):
-            showMap()
+            show_map()
         elif userInput in ('Z', 'z'):
-            optionMenu()
+            option_menu()
             pass #place other menu call here
             break
         else:
             print("try again")
 
-def optionMenu():
+def option_menu():
     """Option menu. Provides misc. features."""
     while True:
-        userInput = raw_input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)메인메뉴 (S)저장 (R)Ranking (H)도움말 (Q)종료: ") #main menu mockup
+        userInput = input(Back.GREEN + "[OPTION]"+ Back.RESET + " (B)메인메뉴 (S)저장 (R)Ranking (H)도움말 (Q)종료: ") #main menu mockup
 
         if userInput in ('B', 'b'):
-            mainMenu() #Back to main
+            main_menu() #Back to main
             break
         elif userInput in ('R', 'r'):    #View ranking
-            viewRanking()
+            view_ranking()
         elif userInput in ('S', 's'):    #Save current game status
             pass #Save game
             print("saving...")
@@ -110,14 +112,14 @@ def optionMenu():
             print("Help!!!")
             pass #place mapview feature call here
         elif userInput in ('Q', 'q'):    #Quit game
-            exitGame()
+            exit_game()
         else:
             print("try again")
 
-def exitGame():
+def exit_game():
     """Do game-exiting process"""
     while True:
-        exitConfirm = raw_input("Are you sure to quit game(Y/N)?: ")
+        exitConfirm = input("Are you sure to quit game(Y/N)?: ")
         if exitConfirm in ('Y', 'y'):
             pass #Check play time of current session and add to total play time
             pass #Check moveCount of current session and add to total moveCount
@@ -128,10 +130,10 @@ def exitGame():
             print("Nope... get back...")
             break
 
-def viewRanking():
+def view_ranking():
     """Display Rank table"""
-    clearScreen()
-    print ("Ranking chart...")
+    #clear_screen()
+    print("Ranking chart...")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print("| # |    NAME    | Playtime | Moves | Message        ")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
@@ -145,7 +147,7 @@ def viewRanking():
     pass #place Ranking table call here
 
 init()  #Initialize Colorama
-user = hero.hero() #create/Initialize user profile
-introTitle() #Draw intro title
-welcomeMenu()
-mainMenu()
+user = hero.Hero() #create/Initialize user profile
+intro_title() #Draw intro title
+welcome_menu()
+main_menu()
