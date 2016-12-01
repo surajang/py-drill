@@ -1,4 +1,7 @@
 # -*- coding: UTF-8 -*-
+from time import time
+import datetime
+
 class Hero:
     """Manage player's status info."""
     userName = ""       #Record player name
@@ -9,8 +12,9 @@ class Hero:
 
     def get_status(self):
         """Display player's status"""
+        self.update_total_play_time()
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-        print(" " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: 00m 20s" + " | " + "Moves: 0")
+        print(" " + self.userName + "@Room #"+ str(self.currentStage) + " | " + "Play time: " + str(self.get_total_play_time()) + "s" + " | " + "Moves: " + str(self.moveCounter))
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
         print("")
 
@@ -39,12 +43,21 @@ class Hero:
         return self.playStartTime
 
     def get_total_play_time(self):
-        """Returns player's total game play time (number)"""
-        return self.totalPlayTime
+        """Returns player's total game play time"""
+        return datetime.timedelta(seconds=self.totalPlayTime)
+        # Requires to return "MM:SS" formatted result
 
-    def set_total_play_time(self, timeDelta):
-        """Update player's total game play time with given time delta.
-        timeDelta >=0, so totalPlayTime never decreases!!
+    def update_total_play_time(self):
+        """Update player's total game play time
+        totalPlayTime never decreases!!
         """
-        self.totalPlayTime = self.totalPlayTime + timeDelta
-        
+        self.totalPlayTime = time() - self.playStartTime
+        #self.totalPlayTime = self.totalPlayTime + timeDelta
+
+    def get_move_counter(self):
+        """Returns player's total move count number"""
+        return self.moveCounter
+
+    def set_move_counter(self, moveDelta):
+        """Update player's total move counter. never decreses!!!"""
+        self.moveCounter = self.moveCounter + moveDelta
