@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import hero
 import sys
-import time
+from time import gmtime, strftime, time
 from colorama import Fore, Back, Style, init
 # some imports...
 
@@ -59,8 +59,9 @@ def create_new_user():
     userInputName = input("Enter player name: ")
     user.set_user_name(userInputName) #create player profile
     print("Welcome," + user.get_user_name() + ".")
-    print(time.time())
-    user.set_play_start_time(time.time())
+    print(strftime("%a, %d %b %Y %H:%M:%S %Z +0000", gmtime()))
+    user.set_play_start_time(time())
+    print(time())
     pass #Now, pass the user to the stage #1 room.
     stage_dispatcher(user.get_current_stage())
 
@@ -69,6 +70,8 @@ def stage_dispatcher(roomNumber):
     roomNumber arg. is required.
     """
     print(user.get_user_name() + " is now entering room #" + str(roomNumber))
+    user.set_current_stage(roomNumber)
+    print("user's current stage: " + str(user.get_current_stage()))
     pass #call stage1 story
 
 def show_map():
@@ -92,7 +95,8 @@ def main_menu():
         userInput = input("(M)ove (S)tat (I)nventory (V)iew Map (Z)Etc. :") #main menu mockup
 
         if userInput in ('M', 'm'):
-            print("Let's get move!")
+            print("Let's get move! +1")
+            user.set_move_counter(1)
             pass #place move feature call here
         elif userInput in ('I', 'i'):
             print("Take a look at your inventory...")
@@ -144,7 +148,7 @@ def exit_game():
 
 def view_ranking():
     """Display Rank table"""
-    #clear_screen()
+    clear_screen()
     print("Ranking chart...")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print("| # |    NAME    | Playtime | Moves | Message        ")
