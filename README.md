@@ -1,10 +1,14 @@
-# Py-Rooms
+# PyROOM
 
 파이썬으로 text-based 방탈출 게임 만들면서 배워보자(...) :+1:
 
 ## Synopsis
 
   플레이어는 '방'에 들어와 그 안에 설정된 퍼즐을 풀어 다음 방으로 넘어가는 형식으로 n개의 방(stage)를 클리어하여 '탈출'한다. 클리어까지의 플레이 시간, 이동횟수 등으로 ranking을 제공하는 시스템 사용
+
+## Environment
+
+  Python 3
 
 ## Design
 
