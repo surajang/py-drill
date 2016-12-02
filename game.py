@@ -140,6 +140,7 @@ def exit_game():
             pass #Check play time of current session and add to total play time
             pass #Check moveCount of current session and add to total moveCount
             pass #Check current stage and update to player's profile
+            print("saving game status...(not yet)")
             print("Good bye.")
             sys.exit(0)
         else:
